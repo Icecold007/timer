@@ -9,6 +9,46 @@
     <script src="script.js" defer></script>
   </head>
   <body>
+    <div class="time-setup">
+      <form id="timerSetup" class="timer-form">
+        <div class="input-group">
+          <input
+            type="number"
+            id="hoursInput"
+            min="0"
+            max="23"
+            value="1"
+            class="time-input"
+          />
+          <label for="hoursInput">Hours</label>
+        </div>
+        <div class="input-group">
+          <input
+            type="number"
+            id="minutesInput"
+            min="0"
+            max="59"
+            value="0"
+            class="time-input"
+          />
+          <label for="minutesInput">Minutes</label>
+        </div>
+        <div class="input-group">
+          <input
+            type="number"
+            id="secondsInput"
+            min="0"
+            max="59"
+            value="0"
+            class="time-input"
+          />
+          <label for="secondsInput">Seconds</label>
+        </div>
+        <button type="submit" class="control-btn set-time-btn">
+          Set Timer
+        </button>
+      </form>
+    </div>
     <div class="container">
       <div class="container-segment">
         <div class="segment-title">Hours</div>
@@ -49,6 +89,11 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="controls">
+      <button class="control-btn" id="startBtn">Start</button>
+      <button class="control-btn" id="stopBtn" disabled>Stop</button>
+      <button class="control-btn" id="resetBtn">Reset</button>
     </div>
   </body>
 </html>
