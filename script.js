@@ -7,6 +7,7 @@ const startBtn = document.getElementById("startBtn");
 const stopBtn = document.getElementById("stopBtn");
 const resetBtn = document.getElementById("resetBtn");
 const timerForm = document.getElementById("timerSetup");
+const timeUpMessage = document.getElementById("timeUpMessage");
 const hoursInput = document.getElementById("hoursInput");
 const minutesInput = document.getElementById("minutesInput");
 const secondsInput = document.getElementById("secondsInput");
@@ -62,8 +63,12 @@ function startTimer() {
       if (currentTime > 0) {
         currentTime--;
         flipAllCards(currentTime);
-      } else {
-        stopTimer();
+        if (currentTime === 0) {
+          setTimeout(() => {
+            stopTimer();
+            showTimeUpMessage();
+          }, 1000); // Wait for the last flip animation
+        }
       }
     }, 1000);
   }
@@ -130,4 +135,12 @@ function flip(flipCard, newNumber) {
     bottomFlip.remove();
   });
   flipCard.append(topFlip, bottomFlip);
+}
+
+function showTimeUpMessage() {
+  timeUpMessage.classList.add("visible");
+}
+
+function dismissTimeUpMessage() {
+  timeUpMessage.classList.remove("visible");
 }
