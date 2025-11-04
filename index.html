@@ -1,128 +1,255 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
   <head>
+
     <meta charset="UTF-8" />
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Timer</title>
+
     <link rel="stylesheet" href="styles.css" />
+
     <script src="script.js" defer></script>
+
   </head>
+
   <body>
+
     <img id="brandLogo" src="cm2.png" alt="CodeMate" />
+
+    <!-- Hidden audio element for alarm sound -->
+    <audio id="alarmSound" preload="auto">
+      <source src="alarm.mp3" type="audio/mpeg">
+      <source src="alarm.ogg" type="audio/ogg">
+    </audio>
+
     <div class="time-setup collapsed">
+
       <button
+
         id="toggleSetup"
+
         class="panel-toggle"
+
         aria-expanded="false"
+
         aria-label="Expand timer setup"
+
       >
+
         <svg viewBox="0 0 24 24" width="16" height="16">
+
           <path d="M8 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+
         </svg>
+
       </button>
+
       <form id="timerSetup" class="timer-form">
+
         <div class="input-group">
+
           <input
+
             type="number"
+
             id="hoursInput"
+
             min="0"
+
             max="23"
+
             value="1"
+
             class="time-input"
+
           />
+
           <label for="hoursInput">Hours</label>
+
         </div>
+
         <div class="input-group">
+
           <input
+
             type="number"
+
             id="minutesInput"
+
             min="0"
+
             max="59"
+
             value="0"
+
             class="time-input"
+
           />
+
           <label for="minutesInput">Minutes</label>
+
         </div>
+
         <div class="input-group">
+
           <input
+
             type="number"
+
             id="secondsInput"
+
             min="0"
+
             max="59"
+
             value="0"
+
             class="time-input"
+
           />
+
           <label for="secondsInput">Seconds</label>
+
         </div>
+
         <button type="submit" class="control-btn set-time-btn">
+
           Set Timer
+
         </button>
+
       </form>
-    </div>
-    <div class="container">
-      <div class="container-segment">
-        <div class="segment-title">Hours</div>
-        <div class="segment">
-          <div class="flip-card" data-hours-tens>
-            <div class="top">0</div>
-            <div class="bottom">0</div>
-          </div>
-          <div class="flip-card" data-hours-ones>
-            <div class="top">1</div>
-            <div class="bottom">1</div>
-          </div>
-        </div>
-      </div>
-      <div class="container-segment">
-        <div class="segment-title">Minutes</div>
-        <div class="segment">
-          <div class="flip-card" data-minutes-tens>
-            <div class="top">0</div>
-            <div class="bottom">0</div>
-          </div>
-          <div class="flip-card" data-minutes-ones>
-            <div class="top">0</div>
-            <div class="bottom">0</div>
-          </div>
-        </div>
-      </div>
-      <div class="container-segment">
-        <div class="segment-title">Seconds</div>
-        <div class="segment">
-          <div class="flip-card" data-seconds-tens>
-            <div class="top">0</div>
-            <div class="bottom">0</div>
-          </div>
-          <div class="flip-card" data-seconds-ones>
-            <div class="top">0</div>
-            <div class="bottom">0</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="controls">
-      <button class="control-btn" id="startBtn">Start</button>
-      <button class="control-btn" id="stopBtn" disabled>Stop</button>
-      <button class="control-btn" id="resetBtn">Reset</button>
-    </div>
-    <div id="timeUpMessage" class="time-up-message">
-      <div class="time-up-content">
-        <h2>Time's Up!</h2>
-        <button class="control-btn" onclick="dismissTimeUpMessage()">Dismiss</button>
-      </div>
+
     </div>
 
+    <div class="container">
+
+      <div class="container-segment">
+
+        <div class="segment-title">Hours</div>
+
+        <div class="segment">
+
+          <div class="flip-card" data-hours-tens>
+
+            <div class="top">0</div>
+
+            <div class="bottom">0</div>
+
+          </div>
+
+          <div class="flip-card" data-hours-ones>
+
+            <div class="top">1</div>
+
+            <div class="bottom">1</div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="container-segment">
+
+        <div class="segment-title">Minutes</div>
+
+        <div class="segment">
+
+          <div class="flip-card" data-minutes-tens>
+
+            <div class="top">0</div>
+
+            <div class="bottom">0</div>
+
+          </div>
+
+          <div class="flip-card" data-minutes-ones>
+
+            <div class="top">0</div>
+
+            <div class="bottom">0</div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="container-segment">
+
+        <div class="segment-title">Seconds</div>
+
+        <div class="segment">
+
+          <div class="flip-card" data-seconds-tens>
+
+            <div class="top">0</div>
+
+            <div class="bottom">0</div>
+
+          </div>
+
+          <div class="flip-card" data-seconds-ones>
+
+            <div class="top">0</div>
+
+            <div class="bottom">0</div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="controls">
+
+      <button class="control-btn" id="startBtn">Start</button>
+
+      <button class="control-btn" id="stopBtn" disabled>Stop</button>
+
+      <button class="control-btn" id="resetBtn">Reset</button>
+
+    </div>
+
+    <div id="timeUpMessage" class="time-up-message">
+
+      <div class="time-up-content">
+
+        <h2>Time's Up!</h2>
+
+        <button class="control-btn" onclick="dismissTimeUpMessage()">Dismiss</button>
+
+      </div>
+
+    </div>
 
         <footer class="footer">
+
           <div class="footer-content">
+
             <div class="footer-text">
+
               <p>©2025 Codemate. All rights reserved.</p>
-              <p>Website by <a href="https://anuragsaud.com/" target="_blank" rel="noopener noreferrer">Anurag Saud</a></p>
+
+              <p>Website designed and developed by <a href="https://anuragsaud.com/" target="_blank" rel="noopener noreferrer">Anurag Saud</a></p>
+
             </div>
+
           </div>
+
         </footer>
+
 </div>
 
   </body>
+
 </html>

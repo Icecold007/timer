@@ -13,6 +13,7 @@ const minutesInput = document.getElementById("minutesInput");
 const secondsInput = document.getElementById("secondsInput");
 const timeSetup = document.querySelector(".time-setup");
 const toggleSetup = document.getElementById("toggleSetup");
+const alarmSound = document.getElementById("alarmSound");
 
 let setupCollapsed = true;
 
@@ -67,6 +68,7 @@ function startTimer() {
           setTimeout(() => {
             stopTimer();
             showTimeUpMessage();
+            playAlarmSound();
           }, 1000); // Wait for the last flip animation
         }
       }
@@ -87,6 +89,18 @@ function resetTimer() {
   stopTimer();
   currentTime = startTime;
   flipAllCards(currentTime);
+}
+
+function playAlarmSound() {
+  alarmSound.currentTime = 0; // Reset to start
+  alarmSound.play().catch((error) => {
+    console.log("Audio playback failed:", error);
+  });
+}
+
+function stopAlarmSound() {
+  alarmSound.pause();
+  alarmSound.currentTime = 0;
 }
 
 startBtn.addEventListener("click", startTimer);
@@ -119,7 +133,7 @@ function flip(flipCard, newNumber) {
   const bottomFlip = document.createElement("div");
   bottomFlip.classList.add("bottom-flip");
 
-  top.textContent = startNumber;
+  topHalf.textContent = startNumber;
   bottomHalf.textContent = startNumber;
   topFlip.textContent = startNumber;
   bottomFlip.textContent = newNumber;
@@ -143,4 +157,5 @@ function showTimeUpMessage() {
 
 function dismissTimeUpMessage() {
   timeUpMessage.classList.remove("visible");
+  stopAlarmSound();
 }
