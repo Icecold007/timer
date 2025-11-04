@@ -14,14 +14,14 @@ const timeSetup = document.querySelector(".time-setup");
 const toggleSetup = document.getElementById("toggleSetup");
 
 // initialize toggle state
-let setupCollapsed = false;
+let setupCollapsed = true;
 
 function setCollapsed(collapsed) {
   setupCollapsed = !!collapsed;
   if (setupCollapsed) {
     timeSetup.classList.add("collapsed");
     toggleSetup.setAttribute("aria-expanded", "false");
-    toggleSetup.textContent = "▶";
+    toggleSetup.setAttribute("aria-label", "Expand timer setup");
     // disable inputs when collapsed
     hoursInput.disabled = true;
     minutesInput.disabled = true;
@@ -29,7 +29,7 @@ function setCollapsed(collapsed) {
   } else {
     timeSetup.classList.remove("collapsed");
     toggleSetup.setAttribute("aria-expanded", "true");
-    toggleSetup.textContent = "◀";
+    toggleSetup.setAttribute("aria-label", "Collapse timer setup");
     hoursInput.disabled = false;
     minutesInput.disabled = false;
     secondsInput.disabled = false;

@@ -9,14 +9,17 @@
     <script src="script.js" defer></script>
   </head>
   <body>
-    <div class="time-setup">
+    <img id="brandLogo" src="cm2.png" alt="CodeMate" />
+    <div class="time-setup collapsed">
       <button
         id="toggleSetup"
         class="panel-toggle"
-        aria-expanded="true"
-        aria-label="Collapse timer setup"
+        aria-expanded="false"
+        aria-label="Expand timer setup"
       >
-        ◀
+        <svg viewBox="0 0 24 24" width="16" height="16">
+          <path d="M8 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
       </button>
       <form id="timerSetup" class="timer-form">
         <div class="input-group">
@@ -103,5 +106,17 @@
       <button class="control-btn" id="stopBtn" disabled>Stop</button>
       <button class="control-btn" id="resetBtn">Reset</button>
     </div>
+
+
+        <footer class="footer">
+          <div class="footer-content">
+            <div class="footer-text">
+              <p>©2025 Codemate. All rights reserved.</p>
+              <p>Website by <a href="https://anuragsaud.com/" target="_blank" rel="noopener noreferrer">Anurag Saud</a></p>
+            </div>
+          </div>
+        </footer>
+</div>
+
   </body>
 </html>
