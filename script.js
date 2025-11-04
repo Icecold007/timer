@@ -10,6 +10,35 @@ const timerForm = document.getElementById("timerSetup");
 const hoursInput = document.getElementById("hoursInput");
 const minutesInput = document.getElementById("minutesInput");
 const secondsInput = document.getElementById("secondsInput");
+const timeSetup = document.querySelector(".time-setup");
+const toggleSetup = document.getElementById("toggleSetup");
+
+// initialize toggle state
+let setupCollapsed = false;
+
+function setCollapsed(collapsed) {
+  setupCollapsed = !!collapsed;
+  if (setupCollapsed) {
+    timeSetup.classList.add("collapsed");
+    toggleSetup.setAttribute("aria-expanded", "false");
+    toggleSetup.textContent = "▶";
+    // disable inputs when collapsed
+    hoursInput.disabled = true;
+    minutesInput.disabled = true;
+    secondsInput.disabled = true;
+  } else {
+    timeSetup.classList.remove("collapsed");
+    toggleSetup.setAttribute("aria-expanded", "true");
+    toggleSetup.textContent = "◀";
+    hoursInput.disabled = false;
+    minutesInput.disabled = false;
+    secondsInput.disabled = false;
+  }
+}
+
+toggleSetup.addEventListener("click", () => {
+  setCollapsed(!setupCollapsed);
+});
 
 timerForm.addEventListener("submit", (e) => {
   e.preventDefault();
