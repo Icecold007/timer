@@ -13,7 +13,6 @@ const secondsInput = document.getElementById("secondsInput");
 const timeSetup = document.querySelector(".time-setup");
 const toggleSetup = document.getElementById("toggleSetup");
 
-// initialize toggle state
 let setupCollapsed = true;
 
 function setCollapsed(collapsed) {
@@ -22,7 +21,7 @@ function setCollapsed(collapsed) {
     timeSetup.classList.add("collapsed");
     toggleSetup.setAttribute("aria-expanded", "false");
     toggleSetup.setAttribute("aria-label", "Expand timer setup");
-    // disable inputs when collapsed
+
     hoursInput.disabled = true;
     minutesInput.disabled = true;
     secondsInput.disabled = true;
