@@ -69,7 +69,7 @@ function startTimer() {
             stopTimer();
             showTimeUpMessage();
             playAlarmSound();
-          }, 1000); // Wait for the last flip animation
+          }, 1000);
         }
       }
     }, 1000);
@@ -92,7 +92,7 @@ function resetTimer() {
 }
 
 function playAlarmSound() {
-  alarmSound.currentTime = 0; // Reset to start
+  alarmSound.currentTime = 0;
   alarmSound.play().catch((error) => {
     console.log("Audio playback failed:", error);
   });
